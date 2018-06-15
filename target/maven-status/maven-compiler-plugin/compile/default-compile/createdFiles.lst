@@ -1,0 +1,10 @@
+com\hixon\web_application_dummy\configuration\SwaggerWsEndpointsConfig.class
+com\hixon\web_application_dummy\configuration\controllers\UserController.class
+com\hixon\web_application_dummy\SampleWebApplication.class
+com\hixon\web_application_dummy\objects\user\UserImpl.class
+com\hixon\web_application_dummy\objects\user\UserInterface.class
+com\hixon\web_application_dummy\objects\responses\CreateUser.class
+com\hixon\web_application_dummy\objects\responses\CreateUserInterface.class
+com\hixon\web_application_dummy\configuration\SwaggerConfig.class
+com\hixon\web_application_dummy\configuration\MvcConfiguration.class
+com\hixon\web_application_dummy\configuration\RuntimeConfiguration.class

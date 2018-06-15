@@ -1,0 +1,154 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: 'Middlewear-management-system'
+  description: 'This is a sample swagger spec detailing any operations required for the booking, management and usage of a booking system'
+basePath: /v1/booking
+host: localhost:8091
+schemes:
+ - http
+ - https
+consumes:
+  - application/json
+produces:
+  - application/json
+  
+paths: 
+  /me:
+    post:
+      summary: creates a new user
+      responses:
+        201:
+          description: A User object.
+          examples: 
+            application/json : {
+              "type" : "UserCreate",
+              "data" : {
+                "firstName" : "Tony",
+                "lastName" : "Nelson"
+              }
+            }
+  /me/{id}:
+    get:
+      summary: gets all user details
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: The ID of the user to return.
+      responses:
+        200:
+          description: returns the current user details
+          examples: 
+            application/json : {
+              "type" : "UserGetDetails",
+              "id" : 12345,
+              "data" : {
+                "firstName" : "Tony",
+                "lastName" : "Nelson",
+                "phone" : {
+                  "primary" : { 
+                    "extension" : 61,
+                    "country" : "AU",
+                    "number": 99087604
+                  },
+                  "secondary" : {
+                    "extension" : 61,
+                    "country" : "AU",
+                    "number": 99087604
+                  },
+                  "work" : {
+                    "extension" : 61,
+                    "country" : "AU",
+                    "number": 99087604
+                  },
+                "mailingAddress" : {
+                    "street" : "123 Lexington ave",
+                    "country" : "AU",
+                    "state" : "NSW",
+                    "postCode" : 2000
+                  },
+                "email" : "abc@gmail.com"
+                }
+              }
+            }
+    patch:
+      summary: change some details for the user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: The ID of the user to return.
+      responses:
+        200:
+          description: returns the current user details
+          examples: 
+            application/json : {
+              "type" : "UserUpdateDetails",
+              "id" : 12345,
+              "data" : {
+                "success" : true,
+                "details" : "update was successful"
+              }
+            }
+  /me/{id}/search:
+    get:
+      summary: returns all current bookings
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: The ID of the user to return.
+      responses:
+        200:
+          description: returns the current user details
+          examples: 
+            application/json : {
+              "type" : "GetUserBookings",
+              "id" : 12345,
+              "data" : [
+                "booking" : {
+                  "bookingId" : 5678,
+                  "day" : "Monday",
+                  "time" : "12272001T16:30:00Z",
+                  "doctor" : 7890,
+                  "category" : 1
+                },
+               "booking" : {
+                  "bookingId" : 1239,
+                  "day" : "Friday",
+                  "time" : "12272001T17:00:00Z",
+                  "doctor" : 8888,
+                  "category" : 42
+                }
+              ]
+            }
+    patch:
+      summary: updates the bookings for this user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: The ID of the user to return.
+      responses:
+        200:
+          description: returns the current user details
+          examples: 
+            application/json : {
+              "type" : "UpdateUserBookings",
+              "id" : 12345,
+              "data" : {
+                 "success" : true,
+                 "details" : "update was successful",
+                 "bookingId" : 4567
+              }
+            }
+
